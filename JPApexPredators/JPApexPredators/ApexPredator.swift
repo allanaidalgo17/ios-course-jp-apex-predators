@@ -21,7 +21,7 @@ struct ApexPredator: Decodable, Identifiable {
         name.lowercased().replacingOccurrences(of: " ", with: "")
     }
     
-    struct MovieScene: Decodable {
+    struct MovieScene: Decodable, Identifiable {
         let id: Int
         let movie: String
         let sceneDescription: String
@@ -61,6 +61,19 @@ enum APType: String, Decodable, CaseIterable, Identifiable {
                     "wind"
             case .sea:
                     "drop.fill"
+        }
+    }
+    
+    var backgroundImage: ImageResource {
+        switch self {
+            case .all:
+                    .land
+            case .land:
+                    .land
+            case .air:
+                    .air
+            case .sea:
+                    .sea
         }
     }
 }
